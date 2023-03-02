@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Web Component</title>
+    <style>
+        body {
+            background-color: #c9c4c4;
+        }
+    </style>
+</head>
+<body>
+    <fod-profile>
+        <img slot="img" src="images/laura.jpg" alt="Image of Laura" width="130px" height="150px"/>
+        <span slot="name">Laura</span>
+        <span slot="email">laura@gmail.com</span>
+    </fod-profile>
+</br>
+    <fod-profile>
+        <img slot="img" src="images/sarah.jpg" alt="Image of Sarah" width="130px" height="150px">
+        <span slot="name">Sarah</span>
+        <span slot="email">sarah@gmail.com</span>
+    </fod-profile>
+</br>
+    <fod-profile>
+        <span slot="name" width="130px" height="150px">Bob</span>
+        <span slot="email">bob@gmail.com</span>
+    </fod-profile>
+</br>
+    <template id="fod-profile-template">
+        <style>
+            .profile {
+                display: flex;
+                justify-content: space-around;
+                width: 20rem;
+                border: 1px solid gray;
+                border-radius: .5rem;
+                padding-right: 2rem;
+                margin-left: 3rem;
+                margin-top: 2rem;
+                background-color: #eae8e8;
+                width: 25rem;
+            }
+        </style>
+        <div class="profile">
+            <div>
+                <slot name='img'>
+                    <img src="images/placeholder.png" alt="Avatar">
+                </slot>
+            </div>
+            <div class="user">
+                <p>Name: <slot name="name"></slot></p>
+                <p>E-mail: <slot name="email"></slot></p>
+            </div>
+        </div>
+    </template>
+    <script>
+        class FodProfile extends HTMLElement {
+            constructor(){
+                super();
+                this.attachShadow({mode: "open"});
+            }
+            connectedCallback(){
+                const tmpl = document.getElementById("fod-profile-template");
+                const node = document.importNode(tmpl.content, true);
+                this.shadowRoot.appendChild(node);
+            }
+        }
+        customElements.define("fod-profile", FodProfile);
+    </script>
+</body>
+</html>
