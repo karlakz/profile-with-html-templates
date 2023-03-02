@@ -29,5 +29,5 @@
 
 ## Author
 
-- GitHub - [karlakz](https://github.com/karlakz)
-- Website URL - [@karlakz](https://www.frontendmentor.io/profile/karlakz)
+- GitHub - [profile-with-html-templates](https://github.com/karlakz/profile-with-html-templates)
+- Website URL - [Live URL](https://profile-using-templates-karlakz.netlify.app/)
